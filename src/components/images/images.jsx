@@ -24,8 +24,9 @@ export const ImageShow = () => {
             onVisibleChange: (vis) => setVisible(vis),
           }}
         >
-          <Image src="assets/letter.png" />
-          <Image src="assets/zhibo.png" />
+          <Image src="assets/letter.jpg" />
+          <Image src="assets/danren.png" />
+          <Image src="assets/aimi.jpg" />
           <Image src="assets/hezhao.jpg" />
         </Image.PreviewGroup>
       </div>
