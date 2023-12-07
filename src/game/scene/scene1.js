@@ -110,9 +110,9 @@ export default class HelloWorldScene extends Phaser.Scene {
       runChildUpdate: true,
     });
     this.bullets.createMultiple({ quantity: 100, active: false });
-    this.bullets.get().changeDamage(globalVariables.damage);
-    this.bullets.get().changeDistance(globalVariables.distance);
-    this.bullets.get().changeFrequency(globalVariables.freq);
+    globalVariables.damage = 10;
+    globalVariables.distance = -800;
+    globalVariables.freq = 1000;
 
     const scoreText = new Score(this);
     const scoreTextLabel = scoreText.create();

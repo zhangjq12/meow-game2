@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { eventEmitter } from "../../eventEmitter";
+import { globalVariables } from "../game";
 // import { globalVariables } from "../game";
 
 export default class Boss {
@@ -85,10 +86,10 @@ export default class Boss {
     bullets.setVisible(false);
     // star.disableBody(true, true);
     // globalVariables.totalScore += 10;
-    this.health -= bullets.getDamage();
+    this.health -= globalVariables.damage;
     this.xuetiao.setScale(this.scale - 0.08, 0.4);
     this.scale -= 0.08;
-    this.text.setText("血量：" + this.health > 0 ? this.health : 0 + "%");
+    this.text.setText("血量：" + (this.health > 0 ? this.health : 0) + "%");
     // this.scoreTextLabel.setText("爱星得分: " + globalVariables.totalScore);
     // if (globalVariables.totalScore === 120) {
     //   this.scene.scene.pause();

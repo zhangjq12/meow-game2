@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { eventEmitter } from "../../eventEmitter";
+import { globalVariables } from "../game";
 // import { globalVariables } from "../game";
 
 const PROPERTY_CHANGE = ["伤害", "频率", "距离"];
@@ -102,23 +103,13 @@ export default class Plank {
     if (res) {
       switch (res[0]) {
         case "伤害":
-          this.bullets
-            .get()
-            .changeDamage(this.bullets.get().getDamage() + parseInt(res[1]));
+          globalVariables.damage += parseInt(res[1]);
           break;
         case "频率":
-          this.bullets
-            .get()
-            .changeFrequency(
-              this.bullets.get().getFrequency() - parseInt(res[1]) * 100
-            );
+          globalVariables.freq -= parseInt(res[1]) * 100;
           break;
         case "距离":
-          this.bullets
-            .get()
-            .changeDistance(
-              this.bullets.get().getDistance() - parseInt(res[1]) * 50
-            );
+          globalVariables.distance -= parseInt(res[1]) * 50;
           break;
         default:
           break;

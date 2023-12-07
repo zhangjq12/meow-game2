@@ -1,11 +1,9 @@
 import Phaser from "phaser";
+import { globalVariables } from "../game";
 
 export default class Bullet extends Phaser.GameObjects.Image {
   base = 1;
-  distance = -800;
   lastY = 0;
-  frequency = 1000;
-  damage = 10;
 
   constructor(scene) {
     super(scene, 0, 0, "roseblue");
@@ -24,37 +22,9 @@ export default class Bullet extends Phaser.GameObjects.Image {
 
   update(time, delta) {
     this.y -= this.speed * delta;
-    if (this.y - this.lastY < this.distance) {
+    if (this.y - this.lastY < globalVariables.distance) {
       this.setActive(false);
       this.setVisible(false);
     }
-  }
-
-  changeSpeed(ratio) {
-    this.speed += this.base * ratio;
-  }
-
-  changeDistance(distance) {
-    this.distance = distance;
-  }
-
-  changeFrequency(freq) {
-    this.frequency = freq;
-  }
-
-  changeDamage(damage) {
-    this.damage = damage;
-  }
-
-  getDistance() {
-    return this.distance;
-  }
-
-  getFrequency() {
-    return this.frequency;
-  }
-
-  getDamage() {
-    return this.damage;
   }
 }

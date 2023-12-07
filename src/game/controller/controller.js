@@ -1,3 +1,5 @@
+import { globalVariables } from "../game";
+
 export const controllerInit = (scene) => {
   const cursors = scene.input.keyboard.createCursorKeys();
   return cursors;
@@ -36,7 +38,7 @@ export const autoShoot = (player, bullets, time, lastfired) => {
     const bullet = bullets.get();
     if (bullet) {
       bullet.fire(player.x, player.y);
-      return time + bullet.getFrequency();
+      return time + globalVariables.freq;
     }
   }
 
