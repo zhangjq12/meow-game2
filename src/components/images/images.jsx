@@ -25,7 +25,7 @@ export const ImageShow = () => {
           }}
         >
           <Image src="assets/letter.jpg" />
-          <Image src="assets/danren.png" />
+          <Image src="assets/danren.jpg" />
           <Image src="assets/aimi.jpg" />
           <Image src="assets/hezhao.jpg" />
         </Image.PreviewGroup>
