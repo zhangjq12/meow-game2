@@ -15,6 +15,7 @@ function App() {
   const [height, setHeight] = useState("0");
   const [openPhoto, setOpenPhoto] = useState(false);
   const [openVictory, setOpenVictory] = useState(false);
+  const [openFail, setOpenFail] = useState(false);
 
   const startGame = () => {
     if (!game) {
@@ -34,7 +35,9 @@ function App() {
     eventEmitter.on("victory", () => {
       setOpenVictory(true);
     });
-    eventEmitter.on("fail", () => {});
+    eventEmitter.on("fail", () => {
+      setOpenFail(true);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -98,7 +101,25 @@ function App() {
           <div className="victoryStr">
             <p>祝贺小喵咪成功过关！</p>
             <p>生日快乐！每一天都开心！</p>
-            <p>我爱你！</p>
+            <p>我爱你！！</p>
+          </div>
+        </Modal>
+        <Modal
+          open={openFail}
+          onCancel={() => {
+            setOpenFail(false);
+            const thisGame = game?.scene;
+            if (thisGame) {
+              thisGame.start("startScene");
+            }
+          }}
+          footer={null}
+        >
+          <Fireworks />
+          <div className="victoryStr">
+            <p>虽然小喵咪没有通关</p>
+            <p>但依旧是我最爱的小喵咪！！</p>
+            <p>生日快乐！我爱你！</p>
           </div>
         </Modal>
       </div>
